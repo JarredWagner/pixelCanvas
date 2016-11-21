@@ -1,2 +1,2 @@
 # pixelCanvas
-Greyscale canvas pixel generation for web textures.
+A jQuery plugin for random pixel drawing on a canvas element.
