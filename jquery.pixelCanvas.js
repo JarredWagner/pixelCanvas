@@ -33,11 +33,11 @@
 
     //Set pixel size
     var canvasWidth = $(canvasHash).width();
-    var squareSize = canvasWidth/settings.divisor;
     var canvasHeight = thisHeight;
+    var squareSize = canvasHeight/settings.divisor;
 
     //Find row amount
-    var rows = thisHeight/squareSize;
+    var columns = canvasWidth/squareSize;
 
     //Set canvas height
     $(canvasHash).attr('height', thisHeight);
@@ -52,12 +52,12 @@
     var i = 0;
 
     //Draw rows
-    while ( i < rows ) {
+    while ( i < settings.divisor ) {
 
       var j = 0;
 
       //Draw columns
-      while ( j < settings.divisor ) {
+      while ( j < columns ) {
 
         //Randomize
         var randomOpacity = Math.random().toFixed(2);
