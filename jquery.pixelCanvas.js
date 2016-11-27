@@ -11,6 +11,8 @@
         maxOpacity: 0.25
       }, options);
 
+      var rows, columns, x, y;
+
     //DOM
 
       //Clean slate for resize or orientationchange
@@ -25,7 +27,7 @@
 
       //Create unique ID
       var canvasID = 'canvas'+Math.round(Math.random().toFixed(2)*100);
-      var canvasHash = '#' + canvasID
+      var canvasHash = '#' + canvasID;
 
       //Insert Canvas
       $(this).prepend('<canvas id="'+canvasID+'"><canvas>');
@@ -40,7 +42,7 @@
 
     //Drawing function
 
-      function drawPixels(iLoopParameter, jLoopParameter, x, y) {
+      function drawPixels(iLoopParameter, jLoopParameter) {
 
         var canvas = document.getElementById(canvasID);
         if (canvas === null) {
@@ -64,15 +66,15 @@
             var randomColor = parseInt(Math.random()*100);
 
             ctx.fillStyle = "rgba("+ randomColor +","+ randomColor +","+ randomColor +","+ randomOpacity +")";
-            
+
             if ( settings.priority === 'vertical' ) {
-							var x = j;
-							var y = i;
-			      } else if ( settings.priority === 'horizontal' ) {
-							var x = i;
-							var y = j;		
-			      }
-			      
+              x = j;
+              y = i;
+            } else if ( settings.priority === 'horizontal' ) {
+              x = i;
+              y = j;
+            }
+
             ctx.fillRect(iLoopParameter * x, iLoopParameter * y, iLoopParameter, iLoopParameter);
 
             j++;
@@ -91,16 +93,16 @@
 
         //VERTICAL PRIORITY
 
-          var rows = thisHeight/settings.pixelSize;
-          var columns = thisWidth/rows;
+          rows = thisHeight/settings.pixelSize;
+          columns = thisWidth/rows;
           drawPixels(rows, columns);
 
       } else if ( settings.priority === 'horizontal' ) {
 
         //HORIZONTAL PRIORITY
 
-          var columns = thisWidth/settings.pixelSize;
-          var rows = thisHeight/columns;
+          columns = thisWidth/settings.pixelSize;
+          rows = thisHeight/columns;
           drawPixels(columns, rows);
 
       }
